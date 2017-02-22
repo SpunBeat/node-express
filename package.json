@@ -1,0 +1,21 @@
+{
+    "name": "node-express",
+    "version": "0.1.0",
+    "scripts": {
+        "start": "node ${SCRIPT:-app.js}"
+    },
+    "dependencies": {
+        "express": "latest",
+        "body-parser": "latest",
+        "method-override": "latest",
+        "cors": "latest",
+        "mongoose": "latest",
+        "morgan": "latest",
+        "passport": "latest",
+        "passport-jwt": "latest",
+        "bcrypt": "latest",
+        "jsonwebtoken": "latest",
+        "multer": "latest",
+        "@google-cloud/storage": "latest"
+    }
+}
