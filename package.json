@@ -1,21 +1,21 @@
 {
-    "name": "node-express",
-    "version": "0.1.0",
-    "scripts": {
-        "start": "node ${SCRIPT:-app.js}"
-    },
-    "dependencies": {
-        "express": "latest",
-        "body-parser": "latest",
-        "method-override": "latest",
-        "cors": "latest",
-        "mongoose": "latest",
-        "morgan": "latest",
-        "passport": "latest",
-        "passport-jwt": "latest",
-        "bcrypt": "latest",
-        "jsonwebtoken": "latest",
-        "multer": "latest",
-        "@google-cloud/storage": "latest"
-    }
+  "name": "node-express",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "node ${SCRIPT:-app.js}"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^1.1.0",
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "jsonwebtoken": "^7.3.0",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.5",
+    "morgan": "^1.8.1",
+    "multer": "^1.3.0",
+    "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1"
+  }
 }

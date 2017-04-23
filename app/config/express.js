@@ -19,6 +19,12 @@ module.exports = function () {
     app.use(methodOverride());
     
     app.use('/', express.static('site'));
+    app.route('/api').get(function(req, res) {
+        res.status(201).json({
+            success: true,
+            version: 1
+        });
+    });
 
     require('../api/v1/users/users.routes.js')(app);
     require('../api/v1/sites/sites.routes.js')(app);
