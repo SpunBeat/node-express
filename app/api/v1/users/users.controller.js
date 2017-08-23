@@ -14,7 +14,8 @@ exports.register = (req, res) => {
             if (err) {
                 return res.status(400).json({
                     success: false,
-                    message: 'El email ya está registrado.'
+                    message: 'El email ya está registrado.',
+                    error: err
                 });
             } else {
                 res.status(201).json({

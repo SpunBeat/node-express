@@ -1,8 +1,12 @@
-const mongoose = require('mongoose');
 const config = require('../../config');
+const bluebird = require('bluebird');
+let mongoose = require('mongoose');
+
 
 module.exports = function () {
-    const db = mongoose.connect(`${config.get('MONGO_URL')}/${config.get('MONGO_COLLECTION')}`, {
+    mongoose.Promise = bluebird;
+    const db = mongoose.connection;
+    mongoose.connect(`${config.get('MONGO_URL')}/${config.get('MONGO_COLLECTION')}`, {
         useMongoClient: true
     });
     require('../../app/api/v1/users/users.model.js');
