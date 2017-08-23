@@ -1,18 +1,13 @@
-/* jslint node:true */
+const config = require('./config');
+const express = require('./app/config/express');
+const mongoose = require('./app/config/mongoose');
+const passport = require('./app/config/passport');
 
-// Server Configuration
-var server_configuration = {
-    express: require('./app/config/express'),
-    passport: require('./app/config/passport'),
-    mongoose: require('./app/config/mongoose'),
-    port: 8080
-};
+mongoose();
+passport();
 
-server_configuration.mongoose();
-server_configuration.passport();
+let app = express();
 
-var app = server_configuration.express();
-
-app.listen((process.env.PORT || server_configuration.port), function () {
-    console.log('localhost:' + server_configuration.port);
+app.listen((process.env.PORT || config.get('PORT')), () => {
+    console.log('localhost:' + config.get('PORT'));
 });

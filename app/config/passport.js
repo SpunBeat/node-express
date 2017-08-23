@@ -1,16 +1,13 @@
-/* jslint node:true */
-
-var extJwt = require('passport-jwt').ExtractJwt;
+const extJwt = require('passport-jwt').ExtractJwt;
+const config = require('../../config');
 
 module.exports = function () {
-    
-    // Options to config passport jwt
-    var opts = {
+
+    const opts = {
         jwtFromRequest: extJwt.fromAuthHeader(),
-        secretOrKey:    "INeedAHero"
+        secretOrKey: config.get('SECRET_KEY')
     };
-    
-    // Call to the JWT strategy
+
     require('./strategies/jsonwebtoken')(opts);
-    
+
 };

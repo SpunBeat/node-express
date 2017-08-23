@@ -1,15 +1,11 @@
-/* jslint node:true */
+const mongoose = require('mongoose');
+const config = require('../../config');
 
-var mongoose = require('mongoose');
-
-module.exports = function() {
-    
-    // Database Reference
-    var db = mongoose.connect('mongodb://vash:02f64ef10f@ds021895.mlab.com:21895/pleizer-demo');
-    
-    // Models to load
+module.exports = function () {
+    const db = mongoose.connect(`${config.get('MONGO_URL')}/${config.get('MONGO_COLLECTION')}`, {
+        useMongoClient: true
+    });
     require('../../app/api/v1/users/users.model.js');
     require('../../app/api/v1/sites/sites.model.js');
-    
     return db;
 };

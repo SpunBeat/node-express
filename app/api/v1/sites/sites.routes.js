@@ -1,11 +1,7 @@
-/* jslint node:true */
-
-var site = require('./sites.controller.js'),
-    imagesCloud = require('../../../lib/images-cloud.js'),
-    passport = require('passport');
-
-// passport jwt
-var requireAuth = passport.authenticate('jwt', {
+const sites = require('./sites.controller.js');
+const passport = require('passport');
+const images = require('../../../lib/images-local.js');
+const requireAuth = passport.authenticate('jwt', {
     session: false
 });
 
@@ -14,17 +10,18 @@ var requireAuth = passport.authenticate('jwt', {
  *****************/
 
 module.exports = function (app) {
-    
+
     app.route('/api/sites')
-        .post(requireAuth, site.create)
-        .get(site.list);
+        .post(requireAuth, sites.create)
+        .get(sites.list);
 
     app.route('/api/sites/upload')
-        .post(imagesCloud.multer.any(), imagesCloud.sendUploadToGCS, site.showpath);
+        // .post(images.multer.any())
+        .post(images.multer.single('file'), sites.showpath);
 
-    app.route('/api/sites/:site_id')
-        .get(site.detail)
-        .put(requireAuth, site.update)
-        .delete(requireAuth, site.delete);
+    app.route('/api/sites/:id')
+        .get(sites.detail)
+        .put(requireAuth, sites.update)
+        .delete(requireAuth, sites.delete);
 
 };

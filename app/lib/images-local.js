@@ -1,13 +1,11 @@
-/* jslint node:true*/
+const multer = require('multer');
 
-var multer = require('multer');
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+let storage = multer.diskStorage({
+    destination: (req, file, cb) => {
         cb(null, './uploads/');
     },
-    filename: function (req, file, cb) {
-        var datetimestamp = Date.now();
+    filename: (req, file, cb) => {
+        let datetimestamp = Date.now();
         cb(null, 
            file.fieldname + '-' + 
            datetimestamp + '.' + 
@@ -15,7 +13,7 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = require('multer')({
+let upload = require('multer')({
     storage: storage
 });
 
